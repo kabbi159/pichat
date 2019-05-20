@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html>
+<style type="text/css">
+    p{
+    text-align:center;
+    }
+
+    img{
+        width: 200px;
+    }
+</style>
+
+<head>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<meta charset="utf-8">
+
+<title>index</title>
+
+</head>
+
+<body>
+
+<input id="tokenField" type="hidden" value={{token}}>
+<input id="codeField" type="hidden" value={{code}}>
+<input id="testField" type="hidden" value={{test}}>
+<p><input id="submitButton" type="button" value="Start PiChat"></p>
+
+<script type="text/javascript">
+    $(function() {
+        $("#filename").on('change', function(){
+            readURL(this);
+        });
+    });
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+           var reader = new FileReader();
+           reader.onload = function (e) {
+              $('#preImage').attr('src', e.target.result);
+           }
+           reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+
+
+
+<form action="#" method="post" enctype="multipart/form-data" name="noticeForm">
+    <input type='file' id="filename" name="filename"/>
+    <br>
+    <img id="preImage" src="${pageContext.request.contextPath}/saveFile/${noticeVO.filename}" alt="image_title"/>
+</form>
+
+
+
+
+
+<script>
+    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('6e30568f4a6a554b69f81d71ad11609e');
+
+    Kakao.Auth.setAccessToken(document.getElementById('tokenField').value, false);
+
+    var result = 'None';
+
+    Kakao.API.request({
+          url: '/v1/friends',
+          success: function(res) {
+            result = res;
+          },
+          fail: function(error) {
+            alert(JSON.stringify(error));
+          }
+     });
+
+    window.onload = function(){
+        document.getElementById('submitButton').onclick = function(){
+            doWork()
+        };
+    }
+
+     function doWork(){
+        alert(JSON.stringify(result));
+        $.ajax({
+            type: "POST",
+            url: "receiver",
+            data: result,
+            success: function(){
+                alert("success");
+                location.href = document.getElementById('testField').value;
+            },
+            error: function(e){
+                alert(e);
+            },
+            dataType: "text"
+        });
+        event.preventDefault();
+     }
+
+
+</script>
+
+</body>
+
+</html>
+

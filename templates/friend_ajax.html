@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+<style type="text/css">
+    p{
+    text-align:center;
+    }
+</style>
+
+<head>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<meta charset="utf-8">
+
+<title>index</title>
+
+</head>
+
+<body>
+
+<input id="tokenField" type="hidden" value={{token}}>
+<a href="https://kauth.kakao.com/oauth/authorize?client_id=def706d31baa63561863e79df9c20bca&redirect_uri=http://127.0.0.1:5000/oauth&response_type=code&scope=talk_message">
+<p><input id="submitButton" type="button" value="Start PiChat"></p>
+<script>
+    $('#submitButton').click(function(){
+        $.ajax({
+            url: "https://kauth.kakao.com/v1/friends",
+            type: "GET",
+            dataType: 'json',
+            crossDomain: true,
+            headers: {
+                "Authorization": "Bearer " + $('#tokenField').val(),
+             },
+            contentType: 'application/json',
+
+            async: false
+        });
+    });
+
+</script>
+
+</body>
+
+</html>
+
