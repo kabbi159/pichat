@@ -8,17 +8,44 @@
 </style>
 
 <head profile="http://www.w3.org/2005/10/profile">
-<meta charset="utf-8">
-<link rel="icon" type="image/png" href="http://example.com/myicon.png">
-<title>index</title>
+    <title>Pichat</title>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="http://example.com/myicon.png">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,100,700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
 </head>
 
 <body>
-<p>
-<a href="https://kauth.kakao.com/oauth/authorize?client_id=def706d31baa63561863e79df9c20bca&redirect_uri=http://127.0.0.1:5000/oauth&response_type=code&response_type=code&scope=friends">
-<img src="http://kabbi159.github.io/img/pichat.png" alt="Pichat (KaKao Login)" align="center">
-</a>
-</p>
+<header>
+    <p>
+    <a href="#header">
+      <img src="https://kabbi159.github.io/img/pichat.png" height=200 alt="Pichat" align="center">
+    </a>
+    </p>
+</header>
+<div style="margin-left:20px; margin-right:20px; margin-bottom: 50px">
+    <div class = "description", style="width:400px; height:400px; float:left; border: 3px solid black">
+        <p class="content">
+            사진한장
+        </p>
+    </div>
+    <div class = "description", style="width:400px; height:400px; float:right; border: 3px solid black">
+        <p class="content">
+            더치페이
+        </p>
+    </div>
+    <div class = "description", style="width:400px; height:400px; margin:auto; border: 3px solid black">
+        <p class="content">
+            카톡방 초대
+        </p>
+    </div>
+</div>
+
+<div style="width:700px; border:none; margin:auto">
+    <a href="https://kauth.kakao.com/oauth/authorize?client_id=def706d31baa63561863e79df9c20bca&redirect_uri=http://127.0.0.1:5000/oauth&response_type=code&scope=talk_message">
+        <img src="https://odaeri.kr/images/buttons/btn_kakao-v2.3.png" width=700 height=100 alt="Kakao Login">
+    </a>
+</div>
 </body>
 
 </html>
