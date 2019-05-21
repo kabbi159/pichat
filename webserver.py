@@ -49,6 +49,7 @@ def preprocess_friend_information():
         img_encoded = face_recognition.face_encodings(img_loaded)
         # print(len(img_encoded))
         friend_img_list.append(img_encoded)
+        print("hello")
 
     return render_template('test.html')
 
