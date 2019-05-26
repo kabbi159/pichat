@@ -86,10 +86,13 @@
         $.ajax({
             type: "POST",
             url: "receiver",
-            data: result,
+            data: {
+                image: document.getElementById('preImage').src,
+                kakao: result
+            },
+
             success: function(){
                 alert("success");
-                location.href = document.getElementById('testField').value;
             },
             error: function(e){
                 alert(e);
