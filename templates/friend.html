@@ -1,32 +1,59 @@
 <!DOCTYPE html>
-
-<html>
 <style type="text/css">
     p{
     text-align:center;
     }
 
-    img{
+    form{
+    text-align:center;
+    }
+
+    img.upload{
         width: 200px;
     }
 </style>
 
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Pichat Service</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+
+  <!-- Custom fonts for this template -->
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="{{ url_for('static', filename='css/agency.min.css') }}" rel="stylesheet">
+
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<meta charset="utf-8">
+
+    <style>
+     section.friend{text-align:center;color:#FFF;background-image:url("https://kabbi159.github.io/img/friend_background2.png");background-repeat:no-repeat;background-attachment:fixed;background-position:center center;background-size:cover}
+     header.hi{background-image:url("https://kabbi159.github.io/img/friend_background.png");}
+    </style>
 
 <title>index</title>
 
 </head>
 
-<body>
 
 <input id="tokenField" type="hidden" value={{token}}>
 <input id="codeField" type="hidden" value={{code}}>
 <input id="testField" type="hidden" value={{test}}>
-<p><input id="submitButton" type="button" value="Start PiChat"></p>
-
+<header class="hi"><br><br><br><br><br></header>
+<section class="friend">
+<button type="button" id="submitButton"><img src="https://kabbi159.github.io/img/start_pichat2.png" width="200"></button>
+<br><br>
 <script type="text/javascript">
     $(function() {
         $("#filename").on('change', function(){
@@ -46,12 +73,12 @@
 
 
 
-
 <form action="#" method="post" enctype="multipart/form-data" name="noticeForm">
     <input type='file' id="filename" name="filename"/>
-    <br>
-    <img id="preImage" src="${pageContext.request.contextPath}" alt="image_title"/>
+    <br><br><br>
+    <img class="upload" id="preImage" src="${pageContext.request.contextPath}" alt="image_title"/>
 </form>
+</section>
 
 
 
